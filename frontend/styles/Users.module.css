@@ -1,0 +1,1591 @@
+/* Users Page Layout */
+.usersLayout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #ced0ce;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 2rem;
+  margin-left: 250px;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Page Header */
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pageTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 0.5rem;
+  flex: 1;
+  min-width: 250px;
+}
+
+.pageSubtitle {
+  color: #6B7280;
+  font-size: 1rem;
+  flex-basis: 100%;
+}
+
+.createBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #10B981;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+  white-space: nowrap;
+}
+
+.createBtn:hover {
+  background: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 0.875rem 1.5rem;
+  background: none;
+  color: #6b7280;
+  border-radius: 8px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+}
+
+.tab:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.tab.activeTab {
+  background: #4F46E5;
+  color: white;
+}
+
+/* Filter Section */
+.filterSection {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.searchBox,
+.filterBox {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  color: #6B7280;
+  flex: 1;
+  min-width: 200px;
+}
+
+.searchBox {
+  flex: 2;
+  min-width: 200px;
+}
+
+.searchInput,
+.filterSelect {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  color: #1F2937;
+}
+
+.filterSelect {
+  cursor: pointer;
+  background: transparent;
+}
+
+/* Ensure all select elements have white background */
+.formGroup select,
+.filterSelect {
+  background-color: #ffffff !important;
+  min-width: 100%;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Specific styling for Role dropdown in Create User modal */
+.roleSelect {
+  background-color: #ffffff !important;
+  border: 1px solid #D1D5DB !important;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: #1F2937;
+  text-align: left;
+  padding-right: 2rem; /* prevent arrow overlap */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  box-sizing: border-box;
+  min-width: 100%;
+  /* Ensure proper dropdown positioning */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.roleSelect:focus {
+  outline: none;
+  border-color: #4F46E5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  z-index: 1000;
+  position: relative;
+}
+
+.roleSelect option {
+  background-color: #ffffff;
+  color: #1F2937;
+  padding: 0.5rem;
+  /* Ensure option visibility */
+  z-index: 9999;
+  position: relative;
+}
+
+/* Stats Grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.statCard {
+  background: rgb(244, 241, 241);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.statValue {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #4F46E5;
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  color: #6B7280;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Users Table */
+.tableContainer {
+  background: rgb(160, 211, 217);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.usersTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.usersTable thead {
+  background: #f6f7f8;
+}
+
+.usersTable th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #E5E7EB;
+}
+
+.usersTable td {
+  padding: 1rem;
+  border-bottom: 1px solid #F3F4F6;
+  color: #4B5563;
+}
+
+.usersTable tbody tr:hover {
+  background: #F9FAFB;
+}
+
+/* User Cell */
+.userCell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.userName {
+  font-weight: 500;
+  color: #1F2937;
+}
+
+/* Badges */
+.roleBadge {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.statusBadge.active {
+  background: #D1FAE5;
+  color: #065F46;
+}
+
+.statusBadge.inactive {
+  background: #FEE2E2;
+  color: #991B1B;
+}
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.actionBtn {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+}
+
+.viewBtn {
+  background: #DBEAFE;
+  color: #1E40AF;
+}
+
+.viewBtn:hover {
+  background: #BFDBFE;
+  transform: translateY(-1px);
+}
+
+.editBtn {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+.editBtn:hover {
+  background: #FDE68A;
+  transform: translateY(-1px);
+}
+
+.deleteBtn {
+  background: #FEE2E2;
+  color: #991B1B;
+}
+
+.deleteBtn:hover {
+  background: #FECACA;
+  transform: translateY(-1px);
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #9CA3AF;
+}
+
+.emptyState svg {
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+/* Comments Section */
+.commentsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.commentForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.commentForm textarea {
+  padding: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 1rem;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.commentForm textarea:focus {
+  outline: none;
+  border-color: #4F46E5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.sendButton {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #4F46E5;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.sendButton:hover {
+  background: #4338CA;
+  transform: translateY(-1px);
+}
+
+.commentsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.comment {
+  display: flex;
+  gap: 1rem;
+}
+
+.commentAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.commentContent {
+  flex: 1;
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.commentHeader strong {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.commentDate {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.commentContent p {
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  /* Fix for dropdown positioning */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  /* Ensure proper stacking context */
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1000;
+  contain: layout;
+  overflow: visible !important;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.modalTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1F2937;
+  margin: 0;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9CA3AF;
+  transition: color 0.2s;
+  font-size: 1.5rem;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  color: #4B5563;
+}
+
+/* Password Field Styling */
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordWrapper input {
+  width: 100%;
+  padding-right: 40px; /* Space for the eye icon */
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6B7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.passwordToggle:hover {
+  color: #4B5563;
+}
+
+/* Edit Form */
+.editForm {
+  padding: 1.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+  position: relative;
+}
+
+.formRow .formGroup {
+  position: relative;
+  z-index: 10;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Required field styling */
+.required {
+  position: relative;
+}
+
+.asterisk {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.formGroup input,
+.formGroup select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  background-color: #ffffff !important;
+  color: #1F2937;
+  text-align: left;
+  padding-right: 2rem; /* prevent arrow overlap */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Specific styling for Role dropdown in Create User modal */
+#createUserModal select,
+.modalContent select,
+.createUserForm select {
+  background-color: #ffffff !important;
+  border: 1px solid #D1D5DB !important;
+  position: relative;
+  z-index: 10;
+  min-width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  padding-right: 2rem; /* prevent arrow overlap */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.formGroup select:focus {
+  outline: none;
+  border-color: #4F46E5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.formGroup select option {
+  background-color: #ffffff;
+  color: #1F2937;
+}
+
+/* Ensure dropdown options have proper background */
+.formGroup select option:checked {
+  background-color: #4F46E5 !important;
+  color: white !important;
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+  outline: none;
+  border-color: #4F46E5;
+}
+
+.fieldError {
+  color: #dc2626;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  animation: popIn 0.3s ease-out;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  width: auto;
+  cursor: pointer;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-top: 1px solid #E5E7EB;
+}
+
+.primaryButton,
+.secondaryButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.primaryButton {
+  background: #4F46E5;
+  color: white;
+}
+
+.primaryButton:hover {
+  background: #4338CA;
+  transform: translateY(-1px);
+}
+
+.secondaryButton {
+  background: #F3F4F6;
+  color: #4B5563;
+}
+
+.secondaryButton:hover {
+  background: #E5E7EB;
+}
+
+/* Loading State */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 1rem;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #E5E7EB;
+  border-top-color: #4F46E5;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Character Limit Indicators */
+.charLimit {
+  font-size: 0.75rem;
+  color: #6B7280;
+  font-weight: 400;
+  margin-left: 0.5rem;
+}
+
+.charLimit.warning {
+  color: #F59E0B;
+}
+
+.charLimit.danger {
+  color: #EF4444;
+}
+
+/* Password Requirements */
+.passwordRequirements {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #F3F4F6;
+  border-radius: 0.375rem;
+  border-left: 3px solid #3B82F6;
+}
+
+.passwordRequirements small {
+  color: #4B5563;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+/* Enhanced Form Validation */
+.formGroup {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.formGroup label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.fieldError {
+  color: #EF4444;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Ensure proper dropdown positioning */
+.formGroup .dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  z-index: 100;
+  overflow: visible;
+  /* Ensure proper stacking context */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  /* Fix for Safari and other browsers */
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* Specific container for Role dropdown */
+.roleDropdownContainer {
+  position: relative;
+  width: 100%;
+  z-index: 100;
+  overflow: visible;
+  display: block;
+  /* Ensure proper dropdown alignment */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  /* Fix for Safari and other browsers */
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  /* Ensure container has proper stacking context */
+  contain: layout;
+  -webkit-contain: layout;
+  -moz-contain: layout;
+  -ms-contain: layout;
+}
+
+/* Ensure Role dropdown has proper positioning when opened */
+.formGroup .roleSelect {
+  position: relative;
+  z-index: 10;
+  /* Ensure dropdown appears above other elements */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+}
+
+.formGroup .roleSelect:focus {
+  z-index: 1000;
+  position: relative;
+  /* Ensure focused dropdown appears above all */
+  transform: translateZ(100);
+  -webkit-transform: translateZ(100);
+  -moz-transform: translateZ(100);
+  -ms-transform: translateZ(100);
+}
+
+/* Fix for dropdown positioning in modal */
+.modalContent .formGroup {
+  position: relative;
+  overflow: visible !important;
+  /* Ensure proper stacking context for dropdowns */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  /* Fix for Safari and other browsers */
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  /* Ensure proper z-index */
+  z-index: 10;
+}
+
+/* Input Focus States */
+.formGroup input:focus,
+.formGroup select:focus {
+  outline: none;
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Ensure modal selects have proper z-index for dropdown alignment */
+.modalContent .formGroup select {
+  position: relative;
+  z-index: 100;
+  min-width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  padding-right: 2rem; /* prevent arrow overlap */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+}
+
+/* Character Count Animation */
+.charLimit {
+  transition: color 0.2s ease;
+}
+
+.charLimit.warning {
+  animation: pulse 2s infinite;
+}
+
+.charLimit.danger {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+/* Dropdown menu alignment fix */
+.formGroup select::-ms-expand {
+  display: none;
+}
+
+/* Custom dropdown arrow and positioning */
+.custom-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.custom-select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #6B7280;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.customSelect select {
+  padding-right: 30px;
+  background-color: #ffffff !important;
+  border: 1px solid #D1D5DB !important;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .pageTitle {
+    font-size: 1.75rem;
+  }
+  
+  .createBtn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mainContent {
+    margin-left: 200px;
+    padding: 1.5rem;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .pageHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .pageHeader > div {
+    flex: 1;
+  }
+  
+  .pageTitle {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    margin-left: 0;
+    padding: 1rem;
+  }
+  
+  .pageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .createBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .filterSection {
+    flex-direction: column;
+  }
+
+  .searchBox,
+  .filterBox {
+    width: 100%;
+  }
+
+  .searchBox {
+    max-width: 100%;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tableContainer {
+    overflow-x: auto;
+  }
+
+  .usersTable {
+    min-width: 800px;
+  }
+  
+  .container {
+    padding: 0;
+  }
+  
+  .tab {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+  
+  .pageTitle {
+    font-size: 1.5rem;
+  }
+  
+  .pageSubtitle {
+    font-size: 0.9rem;
+  }
+  
+  .statValue {
+    font-size: 2rem;
+  }
+  
+  .statLabel {
+    font-size: 0.8rem;
+  }
+  
+  .userCell {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .userName {
+    font-size: 0.9rem;
+  }
+  
+  .roleBadge,
+  .statusBadge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  .actionButtons {
+    justify-content: center;
+  }
+  
+  .actionBtn {
+    padding: 0.4rem;
+    min-width: 32px;
+    min-height: 32px;
+  }
+  
+  .modalContent {
+    max-width: 95%;
+    padding: 0.5rem;
+  }
+  
+  .modalHeader {
+    padding: 1rem;
+  }
+  
+  .modalTitle {
+    font-size: 1.25rem;
+  }
+  
+  .editForm {
+    padding: 1rem;
+  }
+  
+  .formGroup {
+    margin-bottom: 1rem;
+  }
+  
+  .formGroup label {
+    font-size: 0.9rem;
+  }
+  
+  .formGroup input,
+  .formGroup select {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+  
+  .modalFooter {
+    padding: 1rem;
+    flex-direction: column;
+  }
+  
+  .modalFooter button {
+    width: 100%;
+  }
+  
+  .commentsSection {
+    padding: 1rem;
+  }
+  
+  .commentForm textarea {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+  
+  .sendButton {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .comment {
+    gap: 0.75rem;
+  }
+  
+  .commentAvatar {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+  
+  .commentContent {
+    padding: 0.75rem;
+  }
+  
+  .commentHeader {
+    gap: 0.25rem;
+  }
+  
+  .commentHeader strong {
+    font-size: 0.9rem;
+  }
+  
+  .commentDate {
+    font-size: 0.7rem;
+  }
+  
+  .commentContent p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainContent {
+    padding: 0.75rem;
+  }
+  
+  .pageHeader {
+    gap: 0.75rem;
+  }
+  
+  .pageTitle {
+    font-size: 1.25rem;
+    gap: 0.5rem;
+  }
+  
+  .createBtn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .tabs {
+    padding: 0.25rem;
+    gap: 0.25rem;
+  }
+  
+  .tab {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+    min-width: 80px;
+  }
+  
+  .filterSection {
+    gap: 0.5rem;
+  }
+  
+  .searchBox,
+  .filterBox {
+    padding: 0.5rem;
+  }
+  
+  .searchInput,
+  .filterSelect {
+    font-size: 0.85rem;
+  }
+  
+  .statsGrid {
+    gap: 1rem;
+  }
+  
+  .statCard {
+    padding: 1rem;
+  }
+  
+  .statValue {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .statLabel {
+    font-size: 0.75rem;
+  }
+  
+  .usersTable th,
+  .usersTable td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .userAvatar {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+  
+  .userName {
+    font-size: 0.85rem;
+  }
+  
+  .roleBadge,
+  .statusBadge {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.4rem;
+  }
+  
+  .actionBtn {
+    padding: 0.3rem;
+    min-width: 28px;
+    min-height: 28px;
+  }
+  
+  .emptyState {
+    padding: 2rem 1rem;
+  }
+  
+  .emptyState svg {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .modalContent {
+    max-width: 98%;
+    margin: 0.25rem;
+  }
+  
+  .modalHeader {
+    padding: 0.75rem;
+  }
+  
+  .modalTitle {
+    font-size: 1.1rem;
+    gap: 0.5rem;
+  }
+  
+  .closeButton {
+    width: 28px;
+    height: 28px;
+    font-size: 1.25rem;
+  }
+  
+  .editForm {
+    padding: 0.75rem;
+  }
+  
+  .formGroup {
+    margin-bottom: 0.75rem;
+  }
+  
+  .formGroup label {
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .formGroup input,
+  .formGroup select {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .fieldError {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+  }
+  
+  .modalFooter {
+    padding: 0.75rem;
+    gap: 0.5rem;
+  }
+  
+  .primaryButton,
+  .secondaryButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .commentsSection {
+    padding: 0.75rem;
+  }
+  
+  .commentForm textarea {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .sendButton {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+  
+  .comment {
+    gap: 0.5rem;
+  }
+  
+  .commentAvatar {
+    width: 28px;
+    height: 28px;
+    font-size: 0.7rem;
+  }
+  
+  .commentContent {
+    padding: 0.5rem;
+  }
+  
+  .commentHeader strong {
+    font-size: 0.85rem;
+  }
+  
+  .commentDate {
+    font-size: 0.65rem;
+  }
+  
+  .commentContent p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Ensure dropdown alignment */
+.dropdown-container {
+  position: relative;
+}
+
+.dropdownContainer select {
+  position: relative;
+  z-index: 10;
+}
+
+/* Dropdown menu positioning */
+.formGroup select:focus,
+.roleSelect:focus {
+  z-index: 1000;
+  position: relative;
+}
+
+/* Fix for dropdown positioning in modal forms */
+.modalContent .formGroup select {
+  position: relative;
+  z-index: 10;
+  overflow: visible;
+  /* Ensure dropdown appears above modal content */
+  transform: translateZ(10);
+}
+
+.modalContent .formGroup select:focus {
+  z-index: 1000;
+  position: relative;
+  /* Ensure focused dropdown appears above all */
+  transform: translateZ(100);
+}
+
+/* Ensure dropdown options are visible and properly aligned */
+.formGroup select option,
+.roleSelect option {
+  background-color: #ffffff;
+  color: #1F2937;
+  padding: 0.5rem;
+  /* Ensure option visibility */
+  z-index: 9999;
+  position: relative;
+  /* Browser-specific fixes */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Ensure dropdown options appear above all other elements */
+.formGroup select option:checked,
+.roleSelect option:checked {
+  background-color: #4F46E5 !important;
+  color: white !important;
+}
+
+/* Fix for dropdown options in modal */
+.modalContent select option {
+  background-color: #ffffff;
+  color: #1F2937;
+  z-index: 9999;
+  position: relative;
+  /* Browser-specific fixes */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Ensure dropdown options are always visible */
+.formGroup select:focus option,
+.roleSelect:focus option {
+  z-index: 9999 !important;
+  position: relative !important;
+  /* Browser-specific fixes */
+  -webkit-transform: translateZ(0) !important;
+  -moz-transform: translateZ(0) !important;
+  -ms-transform: translateZ(0) !important;
+  transform: translateZ(0) !important;
+}
+
+/* Override any global styles that might interfere */
+.roleSelect {
+  background-color: #ffffff !important;
+  border: 1px solid #D1D5DB !important;
+  border-radius: 8px !important;
+  padding: 0.75rem !important;
+  font-size: 1rem !important;
+  color: #1F2937 !important;
+  text-align: left !important;
+  padding-right: 2rem !important; /* prevent arrow overlap */
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  -ms-appearance: none !important;
+  appearance: none !important;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e") !important;
+  background-position: right 0.5rem center !important;
+  background-repeat: no-repeat !important;
+  background-size: 1.5em 1.5em !important;
+  width: 100% !important;
+  cursor: pointer !important;
+  position: relative !important;
+  z-index: 10 !important;
+  box-sizing: border-box !important;
+  min-width: 100% !important;
+  /* Browser-specific fixes */
+  -webkit-box-sizing: border-box !important;
+  -moz-box-sizing: border-box !important;
+  /* Ensure proper dropdown positioning */
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  -moz-transform: translateZ(0) !important;
+  -ms-transform: translateZ(0) !important;
+}
+
+.roleSelect:focus {
+  outline: none !important;
+  border-color: #4F46E5 !important;
+  -webkit-box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1) !important;
+  -moz-box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1) !important;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1) !important;
+  z-index: 1000 !important;
+  position: relative !important;
+  /* Ensure focused dropdown appears above all */
+  transform: translateZ(100) !important;
+}
+
+.roleSelect option {
+  background-color: #ffffff !important;
+  color: #1F2937 !important;
+  padding: 0.5rem !important;
+  /* Ensure option visibility */
+  z-index: 9999 !important;
+  position: relative !important;
+  /* Ensure options are always visible */
+  transform: translateZ(0) !important;
+}

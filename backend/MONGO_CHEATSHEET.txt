@@ -1,0 +1,162 @@
+╔════════════════════════════════════════════════════════════════╗
+║          MongoDB Commands Cheat Sheet - Backend Terminal      ║
+║                  Mobiloitte PMS - Quick Reference              ║
+╚════════════════════════════════════════════════════════════════╝
+
+📍 WORKING DIRECTORY
+─────────────────────────────────────────────────────────────────
+   cd /Users/admin/Desktop/PMS/backend
+
+
+🚀 START MONGODB
+─────────────────────────────────────────────────────────────────
+   ../start-mongodb-manual.sh
+   
+   OR manually:
+   mongod --dbpath ~/.mongodb/data --logpath ~/.mongodb/logs/mongodb.log --fork
+
+
+🛑 STOP MONGODB
+─────────────────────────────────────────────────────────────────
+   pkill -f mongod
+
+
+✅ CHECK IF RUNNING
+─────────────────────────────────────────────────────────────────
+   lsof -i :27017
+   
+   OR:
+   ps aux | grep mongod
+
+
+💻 CONNECT TO SHELL
+─────────────────────────────────────────────────────────────────
+   ~/.mongodb/bin/mongosh pms_mobiloitte
+
+
+📊 DATABASE STATS (ONE-LINER)
+─────────────────────────────────────────────────────────────────
+   mongosh pms_mobiloitte --eval "db.stats()"
+
+
+📈 VIEW ALL DATA
+─────────────────────────────────────────────────────────────────
+   # All users
+   mongosh pms_mobiloitte --eval "db.users.find().pretty()"
+   
+   # All projects
+   mongosh pms_mobiloitte --eval "db.projects.find().pretty()"
+   
+   # All tasks
+   mongosh pms_mobiloitte --eval "db.tasks.find().pretty()"
+   
+   # All comments
+   mongosh pms_mobiloitte --eval "db.comments.find().pretty()"
+
+
+🔢 COUNT DOCUMENTS
+─────────────────────────────────────────────────────────────────
+   mongosh pms_mobiloitte --eval "db.users.countDocuments()"
+   mongosh pms_mobiloitte --eval "db.projects.countDocuments()"
+   mongosh pms_mobiloitte --eval "db.tasks.countDocuments()"
+   mongosh pms_mobiloitte --eval "db.comments.countDocuments()"
+
+
+📋 LIST COLLECTIONS
+─────────────────────────────────────────────────────────────────
+   mongosh pms_mobiloitte --eval "show collections"
+
+
+📝 VIEW LOGS
+─────────────────────────────────────────────────────────────────
+   tail -f ~/.mongodb/logs/mongodb.log
+
+
+🔄 BACKUP DATABASE
+─────────────────────────────────────────────────────────────────
+   ~/.mongodb/bin/mongodump --db=pms_mobiloitte --out=../backup
+
+
+🔙 RESTORE DATABASE
+─────────────────────────────────────────────────────────────────
+   ~/.mongodb/bin/mongorestore --db=pms_mobiloitte ../backup/pms_mobiloitte
+
+
+🧪 TEST CONNECTION
+─────────────────────────────────────────────────────────────────
+   mongosh --eval "db.adminCommand('ping')"
+
+
+⚡ QUICK SUMMARY
+─────────────────────────────────────────────────────────────────
+   mongosh pms_mobiloitte --eval "
+     printjson({
+       users: db.users.countDocuments(),
+       projects: db.projects.countDocuments(),
+       tasks: db.tasks.countDocuments(),
+       comments: db.comments.countDocuments()
+     })
+   "
+
+
+🛠️ INSIDE MONGOSH SHELL
+─────────────────────────────────────────────────────────────────
+   show dbs                    # List all databases
+   use pms_mobiloitte         # Switch to PMS database
+   show collections           # List collections
+   db.users.find()           # Find all users
+   db.users.findOne()        # Find one user
+   db.stats()                # Database stats
+   exit                      # Exit shell
+
+
+⚙️ TYPICAL WORKFLOW
+─────────────────────────────────────────────────────────────────
+   1. cd /Users/admin/Desktop/PMS/backend
+   2. ../start-mongodb-manual.sh
+   3. lsof -i :27017
+   4. npm start
+   5. mongosh pms_mobiloitte --eval "db.stats()"
+
+
+🔥 MOST USED COMMANDS
+─────────────────────────────────────────────────────────────────
+   # Start everything
+   ../start-mongodb-manual.sh && npm start
+   
+   # Check MongoDB status
+   lsof -i :27017
+   
+   # Quick data check
+   mongosh pms_mobiloitte --eval "db.users.countDocuments()"
+   
+   # View recent users
+   mongosh pms_mobiloitte --eval "db.users.find().limit(5).pretty()"
+   
+   # Stop MongoDB
+   pkill -f mongod
+
+
+📞 TROUBLESHOOTING
+─────────────────────────────────────────────────────────────────
+   # Port in use?
+   lsof -i :27017
+   pkill -f mongod
+   ../start-mongodb-manual.sh
+   
+   # Can't connect?
+   tail -n 50 ~/.mongodb/logs/mongodb.log
+   
+   # Database empty?
+   mongosh pms_mobiloitte --eval "show collections"
+
+
+═══════════════════════════════════════════════════════════════
+  💡 TIP: Keep this file open in a separate terminal window!
+  
+  To view this file anytime:
+  cat /Users/admin/Desktop/PMS/backend/MONGO_CHEATSHEET.txt
+  
+  For detailed documentation:
+  cat /Users/admin/Desktop/PMS/backend/MONGODB_COMMANDS.md
+═══════════════════════════════════════════════════════════════
