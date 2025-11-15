@@ -1,8 +1,6 @@
-# Mobiloitte Project Management System (PMS)
+# Project Management System (PMS)
 
-A comprehensive, full-stack **Project Management System** built with modern technologies for efficient project tracking, team collaboration, and performance analytics.
-
----
+A comprehensive, full-stack Project Management System built with modern technologies for efficient project tracking, team collaboration, and performance analytics.
 
 ## 🚀 Tech Stack
 
@@ -22,8 +20,6 @@ A comprehensive, full-stack **Project Management System** built with modern tech
 - **JWT** - Authentication & authorization
 - **bcryptjs** - Password hashing
 
----
-
 ## 📁 Project Structure
 
 ```
@@ -33,18 +29,23 @@ PMS/
 │   │   └── db.js                    # Database configuration
 │   ├── models/
 │   │   ├── User.js                  # User model
-│   │   └── Project.js               # Project model
+│   │   ├── Project.js               # Project model
+│   │   ├── Task.js                  # Task model
+│   │   └── Comment.js               # Comment model
 │   ├── controllers/
 │   │   ├── userController.js        # User business logic
-│   │   └── projectController.js     # Project business logic
+│   │   ├── projectController.js     # Project business logic
+│   │   ├── taskController.js        # Task business logic
+│   │   └── commentController.js     # Comment business logic
 │   ├── routes/
 │   │   ├── userRoutes.js            # User API routes
-│   │   └── projectRoutes.js         # Project API routes
+│   │   ├── projectRoutes.js         # Project API routes
+│   │   ├── taskRoutes.js            # Task API routes
+│   │   └── commentRoutes.js         # Comment API routes
 │   ├── middlewares/
 │   │   └── authMiddleware.js        # JWT authentication
 │   ├── server.js                    # Entry point
-│   ├── package.json
-│   └── .env
+│   └── .env.example                 # Environment variables template
 │
 ├── frontend/
 │   ├── components/
@@ -63,75 +64,32 @@ PMS/
 │   │   └── _app.jsx                 # App wrapper
 │   ├── styles/
 │   │   ├── globals.css              # Global styles
-│   │   ├── Header.module.css
-│   │   ├── Footer.module.css
-│   │   ├── Sidebar.module.css
-│   │   ├── Slider.module.css
-│   │   ├── ProjectCard.module.css
-│   │   ├── Home.module.css
-│   │   ├── About.module.css
-│   │   ├── Projects.module.css
-│   │   ├── Dashboard.module.css
-│   │   └── Auth.module.css
+│   │   └── ...                      # Component-specific styles
 │   ├── utils/
 │   │   └── api.js                   # API integration
-│   ├── public/
-│   │   ├── logo.png
-│   │   └── Slider Image/
-│   ├── package.json
-│   ├── next.config.js
-│   └── .env.local
+│   └── public/
+│       ├── logo.png
+│       └── Slider Image/
 │
-├── LogoImages/                      # Company logos
-├── Slider Image/                    # Slider images
 └── README.md
 ```
-
----
 
 ## 🔧 Installation & Setup
 
 ### Prerequisites
 - Node.js (v16 or higher)
-- MongoDB (v7 or higher) - See installation options below
-- npm or yarn
+- MongoDB (v7 or higher)
 
 ### 1️⃣ Database Setup
 
-**Option 1: Quick Start with Manual Installation (Recommended)**
+Start MongoDB on port 27017:
 ```bash
-# Run the MongoDB installation script
-./start-mongodb-manual.sh
+# If you have MongoDB installed
+mongod --dbpath /data/db --port 27017
+
+# Or use Docker
+docker run -d -p 27017:27017 --name mongodb mongo:7.0
 ```
-
-**Option 2: Docker (Fastest)**
-```bash
-# Start MongoDB with Docker
-docker-compose up -d
-```
-
-**Option 3: Homebrew (macOS)**
-```bash
-brew tap mongodb/brew
-brew install mongodb-community
-brew services start mongodb-community
-```
-
-**Option 4: MongoDB Atlas (Cloud - Production)**
-1. Sign up at https://www.mongodb.com/cloud/atlas
-2. Create a free cluster
-3. Get connection string and update in `backend/.env`
-
-Update database connection in `backend/.env`:
-```env
-MONGODB_URI=mongodb://localhost:27017/pms_mobiloitte
-JWT_SECRET=your_jwt_secret_key_here
-```
-
-📚 **Detailed Setup Guides**:
-- Manual Installation: See [`MONGODB_SETUP.md`](./backend/MONGODB_SETUP.md)
-- Docker Setup: See [`DOCKER_SETUP.md`](./DOCKER_SETUP.md)
-- Migration Details: See [`MIGRATION_COMPLETE.md`](./MIGRATION_COMPLETE.md)
 
 ### 2️⃣ Backend Setup
 
@@ -142,8 +100,11 @@ cd backend
 # Install dependencies
 npm install
 
+# Create .env file from .env.example and update values
+cp .env.example .env
+
 # Start the server
-npm run dev
+npm start
 ```
 
 The backend server will run on `http://localhost:5000`
@@ -163,8 +124,6 @@ npm run dev
 
 The frontend application will run on `http://localhost:3000`
 
----
-
 ## 🌐 API Endpoints
 
 ### Authentication
@@ -179,134 +138,140 @@ The frontend application will run on `http://localhost:3000`
 - `GET /api/projects/:id` - Get project by ID (Protected)
 - `PUT /api/projects/:id` - Update project (Protected)
 - `DELETE /api/projects/:id` - Delete project (Protected)
-- `GET /api/projects/stats` - Get project statistics (Protected)
 
----
+### Tasks
+- `GET /api/tasks` - Get all tasks (Protected)
+- `POST /api/tasks` - Create new task (Protected)
+- `GET /api/tasks/:id` - Get task by ID (Protected)
+- `PUT /api/tasks/:id` - Update task (Protected)
+- `DELETE /api/tasks/:id` - Delete task (Protected)
 
-## 📄 Pages
-
-### Public Pages
-- **Home** (`/`) - Landing page with unified login option
-- **About** (`/about`) - Company information, mission, vision, team
-- **Projects** (`/projects`) - Browse all projects (requires login)
-- **Login** (`/login`) - Unified login page for both administrators and users
-- **Register** (`/register`) - New user registration (admin only)
-
-### Protected Pages
-- **Dashboard** (`/dashboard`) - Analytics, charts, recent projects
-
----
-
-## 🎨 Features
-
-### User Management
-- ✅ JWT-based authentication
-- ✅ Password encryption with bcrypt
-- ✅ Role-based access (Admin, Manager, Developer)
-- ✅ Unified login system for both administrators and users
-- ✅ User profile management
-
-### Project Management
-- ✅ Create, read, update, delete projects
-- ✅ Project status tracking (Planning, In Progress, Testing, Completed, On Hold)
-- ✅ Priority levels (Low, Medium, High, Critical)
-- ✅ Progress tracking (0-100%)
-- ✅ Budget management
-- ✅ Team member assignment
-- ✅ Date tracking (start/end dates)
-
-### Dashboard Analytics
-- ✅ Interactive charts (Bar chart, Pie chart)
-- ✅ Project statistics
-- ✅ Recent projects overview
-- ✅ Status distribution
-
-### UI/UX
-- ✅ Responsive design (Mobile, Tablet, Desktop)
-- ✅ Modern, clean interface
-- ✅ Smooth animations and transitions
-- ✅ Intuitive navigation
-- ✅ Form validation
-
----
+### Comments
+- `GET /api/comments` - Get all comments (Protected)
+- `POST /api/comments` - Create new comment (Protected)
+- `GET /api/comments/:id` - Get comment by ID (Protected)
+- `PUT /api/comments/:id` - Update comment (Protected)
+- `DELETE /api/comments/:id` - Delete comment (Protected)
 
 ## 🔐 Environment Variables
 
 ### Backend (.env)
 ```env
 PORT=5000
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=
-DB_NAME=pms_mobiloitte
-JWT_SECRET=mobiloitte_pms_secret_key_2025
+MONGODB_URI=mongodb://localhost:27017/pms_mobiloitte
+JWT_SECRET=your_jwt_secret_key_here
 NODE_ENV=development
+
+# Email Configuration (Optional)
+EMAIL_SERVICE=your_email_service
+EMAIL_USER=your_email_username
+EMAIL_PASS=your_email_password
+EMAIL_FROM="Your App Name" <your-email@example.com>
 ```
 
-### Frontend (.env.local)
-```env
-NEXT_PUBLIC_API_URL=http://localhost:5000/api
-```
+## 🎯 Features
 
----
+### User Management
+- ✅ JWT-based authentication
+- ✅ Password encryption with bcrypt
+- ✅ Role-based access (Admin, Manager, Developer)
+- ✅ User profile management
 
-## 🧪 Testing the Application
+### Project Management
+- ✅ Create, read, update, delete projects
+- ✅ Project status tracking
+- ✅ Priority levels
+- ✅ Progress tracking
+- ✅ Team member assignment
 
-### 1. Register a New User
-- Navigate to `/register`
-- Fill in the registration form
-- Submit to create account
+### Task Management
+- ✅ Create, read, update, delete tasks
+- ✅ Task status tracking
+- ✅ Priority levels
+- ✅ Due dates
+- ✅ Assign tasks to team members
 
-### 2. Login
-- Go to `/login` (unified login page for both administrators and users)
-- Enter credentials
-- Access protected dashboard
+### Comment System
+- ✅ Add comments to projects and tasks
+- ✅ View comment history
+- ✅ Edit and delete comments
 
-### 3. Create Projects
-- Visit `/projects`
-- Click "New Project"
-- Fill in project details
-- View in dashboard
+### Dashboard Analytics
+- ✅ Interactive charts
+- ✅ Project statistics
+- ✅ Recent projects overview
 
----
+### UI/UX
+- ✅ Responsive design
+- ✅ Modern, clean interface
+- ✅ Intuitive navigation
+- ✅ Form validation
 
 ## 📦 Database Models
 
 ### User Model
 ```javascript
 {
-  id: INTEGER (Primary Key),
-  name: STRING,
-  email: STRING (Unique),
-  password: STRING (Hashed),
-  role: ENUM (admin, manager, developer),
-  department: STRING,
-  isActive: BOOLEAN,
-  createdAt: DATE,
-  updatedAt: DATE
+  _id: ObjectId,
+  name: String,
+  email: String (Unique),
+  password: String (Hashed),
+  role: String (admin/manager/developer),
+  department: String,
+  isActive: Boolean,
+  createdAt: Date,
+  updatedAt: Date
 }
 ```
 
 ### Project Model
 ```javascript
 {
-  id: INTEGER (Primary Key),
-  name: STRING,
-  description: TEXT,
-  status: ENUM (planning, in-progress, testing, completed, on-hold),
-  priority: ENUM (low, medium, high, critical),
-  progress: INTEGER (0-100),
-  startDate: DATE,
-  endDate: DATE,
-  budget: DECIMAL,
-  assignedTo: INTEGER (Foreign Key -> User),
-  createdBy: INTEGER (Foreign Key -> User),
-  createdAt: DATE,
-  updatedAt: DATE
+  _id: ObjectId,
+  name: String,
+  description: String,
+  status: String (planning/in-progress/testing/completed/on-hold),
+  priority: String (low/medium/high/critical),
+  progress: Number (0-100),
+  startDate: Date,
+  endDate: Date,
+  budget: Number,
+  assignedTo: ObjectId (ref: User),
+  createdBy: ObjectId (ref: User),
+  createdAt: Date,
+  updatedAt: Date
 }
 ```
 
----
+### Task Model
+```javascript
+{
+  _id: ObjectId,
+  title: String,
+  description: String,
+  status: String (todo/in-progress/in-review/done),
+  priority: String (low/medium/high/urgent),
+  dueDate: Date,
+  projectId: ObjectId (ref: Project),
+  assignedTo: ObjectId (ref: User),
+  createdBy: ObjectId (ref: User),
+  createdAt: Date,
+  updatedAt: Date
+}
+```
+
+### Comment Model
+```javascript
+{
+  _id: ObjectId,
+  content: String,
+  projectId: ObjectId (ref: Project),
+  taskId: ObjectId (ref: Task, optional),
+  userId: ObjectId (ref: User),
+  createdAt: Date,
+  updatedAt: Date
+}
+```
 
 ## 🛠️ Development
 
@@ -337,81 +302,14 @@ npm run build
 npm start
 ```
 
----
-
-## 🎯 Future Enhancements
-
-- [ ] Task management within projects
-- [ ] File attachments and document management
-- [ ] Real-time notifications
-- [ ] Team chat/messaging
-- [ ] Calendar integration
-- [ ] Email notifications
-- [ ] Advanced reporting
-- [ ] Export data (PDF, Excel)
-- [ ] Mobile application
-- [ ] Dark mode
-
----
-
-## 📦 Database Migration (MySQL → MongoDB)
-
-**Status**: ✅ **Migration Completed Successfully!**
-
-This project has been migrated from MySQL/Sequelize to MongoDB/Mongoose.
-
-### What Changed
-- Database: MySQL → MongoDB
-- ORM: Sequelize → Mongoose
-- Primary Key: `id` → `_id` (MongoDB ObjectId)
-- All CRUD operations tested and working
-
-### Key Differences
-```javascript
-// Before (MySQL response)
-{ "id": 1, "name": "Test User" }
-
-// After (MongoDB response)
-{ "_id": "68ef24001a5c843325ec4329", "name": "Test User" }
-```
-
-### Documentation
-- **Migration Summary**: [`MIGRATION_COMPLETE.md`](./MIGRATION_COMPLETE.md)
-- **Test Results**: [`MIGRATION_TEST_RESULTS.md`](./MIGRATION_TEST_RESULTS.md)
-- **Setup Guide**: [`MONGODB_SETUP.md`](./backend/MONGODB_SETUP.md)
-- **Docker Setup**: [`DOCKER_SETUP.md`](./DOCKER_SETUP.md)
-
-### Frontend Compatibility
-Minor updates may be needed in frontend to handle `_id` instead of `id`. See [`MIGRATION_COMPLETE.md`](./MIGRATION_COMPLETE.md) for details.
-
----
-
 ## 👥 Contributors
 
 - **Mobiloitte Team** - Full-stack development
-
----
 
 ## 📝 License
 
 This project is proprietary software developed by Mobiloitte.
 
----
-
 ## 📞 Support
 
 For support, email: contact@mobiloitte.com
-
----
-
-## 🙏 Acknowledgments
-
-- Next.js team for the amazing framework
-- Recharts for beautiful data visualization
-- Lucide for icon library
-- MongoDB for scalable database
-- Mongoose for powerful ODM
-
----
-
-**Built with ❤️ by Mobiloitte**
