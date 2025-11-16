@@ -302,14 +302,3 @@ npm run build
 npm start
 ```
 
-## 👥 Contributors
-
-- **Mobiloitte Team** - Full-stack development
-
-## 📝 License
-
-This project is proprietary software developed by Mobiloitte.
-
-## 📞 Support
-
-For support, email: contact@mobiloitte.com
